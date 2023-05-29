@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scientific-Calculator</title>
+    
+
+    <style>
+         
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+
+
+body{
+    font-family: sans-serif;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: whitesmoke;
+
+}
+
+.for{
+    box-shadow: 
+    0em 1.2em 1.2em rgba(0, 0, 0, 0.3),
+    inset 0em 1.2em 1.2em rgba(0, 0, 0, 0.3);
+}
+
+
+.center{
+    background: black;
+    border-radius: 25px; 
+    width: 350px;
+}
+
+
+input[type="text"]{
+    height:60 px ;
+    width: 240px; ;
+    margin-top: 40px ;
+    border-radius: 8px ;
+    border: 1px solid #e1e7ea ;
+    color: black ;  
+    font-size: 28px;
+    font-weight: bold ;
+    text-align: right;
+    padding-right: 20px;
+
+}
+
+
+form .buttons{
+    width:300px ;
+    margin:10px 25px 0px 25px ;
+    padding:10px 0px ;
+}
+
+
+input[type="button"]{
+    width:45px ;
+    height: 50px;
+    margin:5px ;
+    font-size: 22px;
+    line-height: 55px;
+    border-radius: 3px;
+    border: 1px solid #d9d9d9;
+
+
+
+}
+
+input#clear{
+    background: aqua;
+    color: black;
+
+}
+
+input#equal{
+    width:230px ;
+    margin:10px 0px 10px 0px ;
+    font-size:30px ;
+    color: black ;
+    background: royalblue ;
+    border: 1px solid ;
+
+
+}
+    </style>
+</head>
+<body>
+    <div class="center">
+        <form name="forms" class="for">
+            <input name="display" id="display" type="text">
+            <div class="buttons">
+                <input type="button" value="9" onclick="crud('9')">
+                <input type="button" value="8" onclick="crud('8')">
+                <input type="button" value="7" onclick="crud('7')">
+                <input type="button" value="DEL" onclick="del()">
+                <input type="button" value="AC" onclick="ac()"><br>
+                <input type="button" value="6"   onclick="crud('6')">
+                <input type="button" value="5"   onclick="crud('5')">
+                <input type="button" value="4"   onclick="crud('4')">
+                <input type="button" value="-"   onclick="crud('-')">
+                <input type="button" value="+"   onclick="crud('+')"><br>
+                <input type="button" value="3"   onclick="crud('3')">
+                <input type="button" value="2"   onclick="crud('2')">
+                <input type="button" value="1"   onclick="crud('1')">
+                <input type="button" value="*"   onclick="crud('*')">
+                <input type="button" value="/"   onclick="crud('/')"><br>
+                <input type="button" value="0"   onclick="crud('0')">
+                <input type="button" value="."   onclick="crud('.')">
+                <input type="button" value="("   onclick="crud((''))">
+                <input type="button" value=")"   onclick="crud((''))">
+                <input type="button" value="&#8730;"   onclick="sqrt()"><br>
+                <input type="button" value="%"   onclick="per()">
+                <input type="button" value="x!"   onclick="fact()">
+                <input type="button" value="rad"   onclick="rad()">
+                <input type="button" value="x&#178;"   onclick="square()">
+                <input type="button" value="log"   onclick="logarithm()"><br>
+                <input type="button" value="ln"   onclick="lan()">
+                <input type="button" value="pi"   onclick="pi()">
+                <input type="button" value="sin"   onclick="sine()">
+                <input type="button" value="cos"   onclick="cos()">
+                <input type="button" value="tan"   onclick="tan()"><br>
+                <input type="button" value="0"   onclick="crud('0')">
+                <input type="button" value="="   onclick="equal()">
+
+                
+                
+
+            </div>
+        </form>
+    </div>
+    <script>
+        function crud(a){
+    forms.display.value += a;
+}
+
+
+function del(){
+    var war = forms.display.value;
+    forms.display.value = war.substring(0, war.length-1);
+}
+
+
+function ac(){
+    forms.display.value = "";
+}
+
+
+function equal(){
+    forms.display.value = eval(forms.display.value);
+}
+
+function sqrt(){
+
+    var qwerty = forms.display.value;
+
+    var store = Math.sqrt(qwerty);
+    forms.display.value = store;
+}
+
+function per(){
+    var percentage = forms.display.value;
+    var temp = eval(percentage);
+    var anpercent = temp*100 + "%";
+    forms.display.value = anpercent;
+}
+
+function  fact(){
+    var n = forms.display.value;
+    let answer = 1;
+    if (n == 0 || n == 1){
+      answer = 1;
+    }else{
+      for(var i = n; i >= 1; i--){
+        answer = answer * i;
+      }
+      
+    } 
+    
+    forms.display.value = answer;
+}
+
+
+
+function rad(){
+    var radian = forms.display.value;
+    var radia = (radian*180)/3.14;
+    forms.display.value = radia;
+}
+
+function square(){
+    var squared = forms.display.value;
+    var redeeemd = Math.pow(squared,2);
+    forms.display.value = redeeemd;
+}
+
+function logarithm(){
+    var logarit = forms.display.value;
+    var legit = Math.log10(logarit);
+    forms.display.value = legit;
+}
+
+function lan(){
+    var logarit = forms.display.value;
+    var legit = Math.log(logarit);
+    forms.display.value = legit;
+}
+
+function pi(){
+    var pai = forms.display.value;
+    var paai = pai * 3.141;
+    forms.display.value = paai;
+}
+
+function sine(){
+    var trignometry = forms.display.value;
+    var result = Math.sin(trignometry);
+    forms.display.value = result;
+
+}
+
+function cos(){
+    var trignometry = forms.display.value;
+    var result = Math.cos(trignometry);
+    forms.display.value = result;
+    
+}
+function tan(){
+    var trignometry = forms.display.value;
+    var result = Math.tan(trignometry);
+    forms.display.value = result;
+    
+}
+    </script>
+</body>
+</html>
